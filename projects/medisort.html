@@ -50,13 +50,69 @@
     </section>
 
     <section>
-      <h2>Project files</h2>
-      <p>
-        Simulation files and documentation can be linked here if they are
-        available to share.
-      </p>
-      <span class="repo-placeholder">Repository coming soon</span>
+    <div class="gallery-heading">
+        <h2>Build gallery</h2>
+
+        <div class="gallery-controls">
+        <button
+            type="button"
+            aria-label="Scroll gallery left"
+            onclick="document.getElementById('project-gallery').scrollBy({
+            left: -500,
+            behavior: 'smooth'
+            })"
+        >
+            ←
+        </button>
+
+        <button
+            type="button"
+            aria-label="Scroll gallery right"
+            onclick="document.getElementById('project-gallery').scrollBy({
+            left: 500,
+            behavior: 'smooth'
+            })"
+        >
+            →
+        </button>
+        </div>
+    </div>
+
+    <div class="gallery-track" id="project-gallery">
+        <div class="gallery-empty">
+        Build photos and videos coming soon.
+        </div>
+
+        <!--
+        PHOTO EXAMPLE:
+
+        <figure class="gallery-item">
+        <img
+            src="../images/atlas/control-panel.jpg"
+            alt="Project Atlas control interface on the secondary display"
+            loading="lazy"
+        >
+        <figcaption>Raspberry Pi control interface</figcaption>
+        </figure>
+        -->
+
+        <!--
+        VIDEO EXAMPLE:
+
+        <figure class="gallery-item">
+        <video controls preload="metadata">
+            <source
+            src="../videos/atlas/screen-lift.mp4"
+            type="video/mp4"
+            >
+            Your browser does not support this video.
+        </video>
+        <figcaption>Motorised screen lift demonstration</figcaption>
+        </figure>
+        -->
+    </div>
     </section>
+
   </main>
 
   <footer class="site-footer">
