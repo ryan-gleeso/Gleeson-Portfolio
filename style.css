@@ -2,8 +2,6 @@
 
 /* =========================================================
    1. SITE COLOURS
-
-   Change these values to change the colours across every page.
    ========================================================= */
 :root {
   --background: #080c13;
@@ -177,8 +175,6 @@ section {
 
 /* =========================================================
    6. CLICKABLE PROJECT CARDS
-
-   The entire card is a link to a separate project HTML file.
    ========================================================= */
 .project-list {
   display: grid;
@@ -231,8 +227,6 @@ section {
 
 /* =========================================================
    7. TECHNOLOGY TAGS
-
-   Used on homepage cards and project detail pages.
    ========================================================= */
 .tags {
   display: flex;
@@ -296,11 +290,12 @@ section {
   color: var(--muted);
 }
 
-.project-page ul {
+.project-page ul,
+.project-page ol {
   padding-left: 23px;
 }
 
-/* Text shown until that project's repository exists */
+/* Shown until the real GitHub repository link is available */
 .repo-placeholder {
   display: inline-block;
   padding: 13px 19px;
@@ -312,6 +307,9 @@ section {
 
 /* =========================================================
    9. HORIZONTAL PHOTO AND VIDEO GALLERY
+
+   This remains available for your other project pages.
+   MediSort now uses the video section below instead.
    ========================================================= */
 .gallery-heading {
   display: flex;
@@ -344,10 +342,6 @@ section {
   border-color: var(--cyan);
 }
 
-/*
-  overflow-x: auto lets visitors scroll sideways.
-  scroll-snap-type makes each image/video stop neatly in place.
-*/
 .gallery-track {
   display: flex;
   gap: 16px;
@@ -390,9 +384,7 @@ section {
   text-align: center;
 }
 
-/*
-  Optional styling if you add one larger image outside the gallery.
-*/
+/* An individual image outside a gallery */
 .project-image {
   display: block;
   max-width: 100%;
@@ -402,7 +394,27 @@ section {
 }
 
 /* =========================================================
-   10. FOOTER
+   10. MEDISORT DEMO VIDEO
+   ========================================================= */
+.demo-video {
+  display: block;
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  margin-top: 25px;
+  border: 1px solid var(--border);
+  background: #05090f;
+}
+
+.video-description {
+  max-width: 900px;
+  margin-top: 15px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* =========================================================
+   11. FOOTER
    ========================================================= */
 .site-footer {
   padding: 28px 0;
@@ -412,7 +424,7 @@ section {
 }
 
 /* =========================================================
-   11. MOBILE LAYOUT
+   12. MOBILE LAYOUT
    ========================================================= */
 @media (max-width: 650px) {
   .nav {
@@ -451,7 +463,7 @@ section {
 }
 
 /* =========================================================
-   12. ACCESSIBILITY: REDUCED MOTION
+   13. ACCESSIBILITY: REDUCED MOTION
    ========================================================= */
 @media (prefers-reduced-motion: reduce) {
   *,

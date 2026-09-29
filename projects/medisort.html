@@ -44,9 +44,9 @@
       <h2>Overview</h2>
 
       <p>
-        MediSort simulates a coordinated workflow involving Ryan's robot,
-        Flynn's robot and a UR3. The robots collect pills from known
-        locations, transfer them between work areas and deposit them at
+        MediSort simulates a coordinated workflow involving my personal custom 
+        robot, Flynn's custom robot and a UR3. The robots collect pills from 
+        known locations, transfer them between work areas and deposit them at
         their destination.
       </p>
 
@@ -74,7 +74,7 @@
           state transitions and GUI updates.
         </li>
         <li>
-          <strong>Robot controllers:</strong> operate Ryan's robot,
+          <strong>Robot controllers:</strong> operate my robot,
           Flynn's robot and the UR3.
         </li>
         <li>
@@ -140,54 +140,19 @@
       </p>
     </section>
 
-    <!-- ==================== GALLERY ==================== -->
+    <!-- ==================== SIMULATION VIDEO ==================== -->
     <section>
-      <div class="gallery-heading">
-        <h2>Simulation gallery</h2>
+      <h2>Simulation demo</h2>
 
-        <div class="gallery-controls">
-          <button
-            type="button"
-            aria-label="Scroll gallery left"
-            onclick="document.getElementById('project-gallery').scrollBy({
-              left: -500,
-              behavior: 'smooth'
-            })"
-          >
-            ←
-          </button>
+      <video class="demo-video" controls preload="metadata">
+        <source src="Medisort_Demo.mp4" type="video/mp4">
+        Your browser does not support this video.
+      </video>
 
-          <button
-            type="button"
-            aria-label="Scroll gallery right"
-            onclick="document.getElementById('project-gallery').scrollBy({
-              left: 500,
-              behavior: 'smooth'
-            })"
-          >
-            →
-          </button>
-        </div>
-      </div>
-
-      <div class="gallery-track" id="project-gallery">
-        <div class="gallery-empty">
-          Simulation screenshots and demonstration videos coming soon.
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== REPOSITORY ==================== -->
-    <section>
-      <h2>Code and simulation files</h2>
-
-      <p>
-        The project repository can contain the Python controllers,
-        movement modules, collision logic, GUI, STL environment meshes
-        and setup instructions.
+      <p class="video-description">
+        This is a simulation of the MediSort system. My robot collects the pill
+        bottles. The video is sped up; the real operation would be slower for safety.
       </p>
-
-      <span class="repo-placeholder">Repository coming soon</span>
     </section>
   </main>
 
