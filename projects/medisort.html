@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MediSort | Ryan Gleeson</title>
+  <meta
+    name="description"
+    content="MediSort: a multi-robot pill sorting and handoff simulation."
+  >
   <link rel="stylesheet" href="../style.css">
 </head>
 
@@ -17,102 +21,174 @@
   </header>
 
   <main class="container project-page">
-    <div class="label">Mechatronics / University project</div>
+    <!-- ==================== INTRO ==================== -->
+    <div class="label">Robotics / Team project</div>
     <h1>MediSort</h1>
 
     <p class="project-intro">
-      A simulated pill-sorting system exploring how mechanical handling,
-      sensing and control can work together.
+      A multi-robot pill sorting system developed in simulation. It
+      coordinates pill pickup, robot-to-robot handoff and deposit through
+      a state machine and resolved motion rate control.
     </p>
 
     <div class="tags">
-      <span class="tag">Simulation</span>
-      <span class="tag">Sensing</span>
-      <span class="tag">Control</span>
+      <span class="tag">Python</span>
+      <span class="tag">Swift simulation</span>
+      <span class="tag">Tkinter</span>
+      <span class="tag">RMRC</span>
+      <span class="tag">State machines</span>
     </div>
 
+    <!-- ==================== OVERVIEW ==================== -->
     <section>
       <h2>Overview</h2>
+
       <p>
-        MediSort explores the design of a system that identifies and sorts
-        pills. The project was developed in simulation rather than as a
-        finished physical device.
+        MediSort simulates a coordinated workflow involving Ryan's robot,
+        Flynn's robot and a UR3. The robots collect pills from known
+        locations, transfer them between work areas and deposit them at
+        their destination.
+      </p>
+
+      <p>
+        A Tkinter interface lets the user select a patient and operation
+        mode, start actions, monitor progress and trigger an emergency stop.
+        The robots and environment meshes are displayed in the Swift
+        simulation environment.
       </p>
     </section>
 
+    <!-- ==================== ARCHITECTURE ==================== -->
     <section>
-      <h2>Engineering focus</h2>
+      <h2>System architecture</h2>
+
+      <p>
+        The Tkinter interface sends commands to the main application
+        controller. The controller initialises the robots, pill shelf and
+        environment, then coordinates each robot's movement module.
+      </p>
+
       <ul>
-        <li>Handling individual items consistently.</li>
-        <li>Using sensor information to support sorting decisions.</li>
-        <li>Coordinating the sequence of detection and movement.</li>
+        <li>
+          <strong>Main controller:</strong> manages setup, robot actions,
+          state transitions and GUI updates.
+        </li>
+        <li>
+          <strong>Robot controllers:</strong> operate Ryan's robot,
+          Flynn's robot and the UR3.
+        </li>
+        <li>
+          <strong>Movement modules:</strong> provide RMRC, positioning,
+          end-effector orientation and gripper actions.
+        </li>
+        <li>
+          <strong>Swift environment:</strong> simulates the robots,
+          obstacles, pill shelf and other STL meshes.
+        </li>
       </ul>
     </section>
 
+    <!-- ==================== STATE MACHINE ==================== -->
     <section>
-    <div class="gallery-heading">
-        <h2>Build gallery</h2>
+      <h2>Pill handling sequence</h2>
+
+      <p>
+        The main loop processes each pill through a sequence of states:
+      </p>
+
+      <ol>
+        <li>
+          <strong>Approach:</strong> move toward the pill using RMRC.
+        </li>
+        <li>
+          <strong>Level:</strong> adjust the end-effector orientation.
+        </li>
+        <li>
+          <strong>Pick up:</strong> move into position and close the gripper.
+        </li>
+        <li>
+          <strong>Handoff:</strong> move to the transfer location and
+          coordinate with the UR3.
+        </li>
+        <li>
+          <strong>Transfer:</strong> coordinate the next robot's pickup.
+        </li>
+        <li>
+          <strong>Deposit:</strong> place the pill at its destination.
+        </li>
+        <li>
+          <strong>Reset:</strong> return the robots to safe positions before
+          processing the next pill.
+        </li>
+      </ol>
+    </section>
+
+    <!-- ==================== CONTROL AND SAFETY ==================== -->
+    <section>
+      <h2>Control and safety logic</h2>
+
+      <p>
+        Background threads keep the simulation responsive while robot
+        actions run. Events coordinate pause and stop behaviour, and a queue
+        passes progress updates to the GUI. Separate collision modules
+        support obstacle and safety checks.
+      </p>
+
+      <p>
+        The interface also includes emergency-stop and teach-mode controls
+        for interacting with the simulated system.
+      </p>
+    </section>
+
+    <!-- ==================== GALLERY ==================== -->
+    <section>
+      <div class="gallery-heading">
+        <h2>Simulation gallery</h2>
 
         <div class="gallery-controls">
-        <button
+          <button
             type="button"
             aria-label="Scroll gallery left"
             onclick="document.getElementById('project-gallery').scrollBy({
-            left: -500,
-            behavior: 'smooth'
+              left: -500,
+              behavior: 'smooth'
             })"
-        >
+          >
             ←
-        </button>
+          </button>
 
-        <button
+          <button
             type="button"
             aria-label="Scroll gallery right"
             onclick="document.getElementById('project-gallery').scrollBy({
-            left: 500,
-            behavior: 'smooth'
+              left: 500,
+              behavior: 'smooth'
             })"
-        >
+          >
             →
-        </button>
+          </button>
         </div>
-    </div>
+      </div>
 
-    <div class="gallery-track" id="project-gallery">
+      <div class="gallery-track" id="project-gallery">
         <div class="gallery-empty">
-        Build photos and videos coming soon.
+          Simulation screenshots and demonstration videos coming soon.
         </div>
-
-        <!--
-        PHOTO EXAMPLE:
-
-        <figure class="gallery-item">
-        <img
-            src="../images/atlas/control-panel.jpg"
-            alt="Project Atlas control interface on the secondary display"
-            loading="lazy"
-        >
-        <figcaption>Raspberry Pi control interface</figcaption>
-        </figure>
-        -->
-
-        <!--
-        VIDEO EXAMPLE:
-
-        <figure class="gallery-item">
-        <video controls preload="metadata">
-            <source
-            src="../videos/atlas/screen-lift.mp4"
-            type="video/mp4"
-            >
-            Your browser does not support this video.
-        </video>
-        <figcaption>Motorised screen lift demonstration</figcaption>
-        </figure>
-        -->
-    </div>
+      </div>
     </section>
 
+    <!-- ==================== REPOSITORY ==================== -->
+    <section>
+      <h2>Code and simulation files</h2>
+
+      <p>
+        The project repository can contain the Python controllers,
+        movement modules, collision logic, GUI, STL environment meshes
+        and setup instructions.
+      </p>
+
+      <span class="repo-placeholder">Repository coming soon</span>
+    </section>
   </main>
 
   <footer class="site-footer">
