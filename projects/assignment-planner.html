@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- ==================== PAGE SETTINGS ==================== -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Adaptive Assignment Planner | Ryan Gleeson</title>
+
   <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
+  <!-- ==================== NAVIGATION ==================== -->
   <header class="site-header">
     <div class="container">
       <a class="back-link" href="../index.html#projects">
@@ -17,7 +21,9 @@
   </header>
 
   <main class="container project-page">
+    <!-- ==================== PROJECT INTRODUCTION ==================== -->
     <div class="label">Software / Concept</div>
+
     <h1>Adaptive assignment planner</h1>
 
     <p class="project-intro">
@@ -31,99 +37,136 @@
       <span class="tag">Time estimation</span>
     </div>
 
+    <!-- ==================== GALLERY SHORTCUT ==================== -->
+    <div class="hero-actions">
+      <a class="button" href="#project-gallery">
+        View gallery ↓
+      </a>
+    </div>
+
+    <!-- ==================== THE PROBLEM ==================== -->
     <section>
       <h2>The problem</h2>
+
       <p>
-        Assignments often look manageable until the research, implementation,
-        testing and writing tasks are broken down. Estimating those tasks
-        accurately is difficult, especially when several deadlines overlap.
+        Assignments often look manageable until the research,
+        implementation, testing and writing tasks are broken down.
+        Estimating those tasks accurately is difficult, especially
+        when several deadlines overlap.
       </p>
     </section>
 
+    <!-- ==================== PROPOSED WORKFLOW ==================== -->
     <section>
       <h2>Proposed workflow</h2>
+
       <ul>
         <li>Enter an assignment brief and due date.</li>
-        <li>Generate a task breakdown and estimated timeline.</li>
-        <li>Mark sections complete and record their actual completion times.</li>
-        <li>Use that history to improve future estimates for the user.</li>
+
+        <li>
+          Generate a task breakdown and estimated timeline.
+        </li>
+
+        <li>
+          Mark sections complete and record their actual
+          completion times.
+        </li>
+
+        <li>
+          Use that history to improve future estimates
+          for the user.
+        </li>
       </ul>
     </section>
 
+    <!-- ==================== CURRENT STAGE ==================== -->
     <section>
       <h2>Current stage</h2>
+
       <p>
-        This is a project concept. The scheduling and adaptive estimation
-        features still need to be designed and implemented.
+        This is a project concept. The scheduling and adaptive
+        estimation features still need to be designed and implemented.
       </p>
     </section>
 
+    <!-- ==================== PROJECT GALLERY ==================== -->
     <section>
-        <div class="gallery-heading">
-            <h2>Build gallery</h2>
+      <div class="gallery-heading">
+        <h2>Build gallery</h2>
 
-            <div class="gallery-controls">
-            <button
-                type="button"
-                aria-label="Scroll gallery left"
-                onclick="document.getElementById('project-gallery').scrollBy({
-                left: -500,
-                behavior: 'smooth'
-                })"
-            >
-                ←
-            </button>
+        <div class="gallery-controls">
+          <button
+            type="button"
+            aria-label="Scroll gallery left"
+            onclick="document.getElementById('project-gallery').scrollBy({
+              left: -500,
+              behavior: 'smooth'
+            })"
+          >
+            ←
+          </button>
 
-            <button
-                type="button"
-                aria-label="Scroll gallery right"
-                onclick="document.getElementById('project-gallery').scrollBy({
-                left: 500,
-                behavior: 'smooth'
-                })"
-            >
-                →
-            </button>
-            </div>
+          <button
+            type="button"
+            aria-label="Scroll gallery right"
+            onclick="document.getElementById('project-gallery').scrollBy({
+              left: 500,
+              behavior: 'smooth'
+            })"
+          >
+            →
+          </button>
+        </div>
+      </div>
+
+      <div
+        class="gallery-track"
+        id="project-gallery"
+        tabindex="0"
+        role="region"
+        aria-label="Assignment planner gallery"
+      >
+        <div class="gallery-empty">
+          Interface mockups, screenshots and demonstrations coming soon.
         </div>
 
-        <div class="gallery-track" id="project-gallery">
-            <div class="gallery-empty">
-            Build photos and videos coming soon.
-            </div>
+        <!--
+          PHOTO EXAMPLE — uncomment after adding the image:
 
-            <!--
-            PHOTO EXAMPLE:
-
-            <figure class="gallery-item">
+          <figure class="gallery-item">
             <img
-                src="../images/atlas/control-panel.jpg"
-                alt="Project Atlas control interface on the secondary display"
-                loading="lazy"
+              src="../images/assignment-planner-interface.png"
+              alt="Adaptive assignment planner interface concept"
+              loading="lazy"
             >
-            <figcaption>Raspberry Pi control interface</figcaption>
-            </figure>
-            -->
+            <figcaption>
+              Assignment planner interface concept
+            </figcaption>
+          </figure>
+        -->
 
-            <!--
-            VIDEO EXAMPLE:
+        <!--
+          VIDEO EXAMPLE — uncomment after adding the video:
 
-            <figure class="gallery-item">
-            <video controls preload="metadata">
-                <source
-                src="../videos/atlas/screen-lift.mp4"
+          <figure class="gallery-item">
+            <video controls playsinline preload="metadata">
+              <source
+                src="../videos/Assignment_Planner_Demo.mp4"
                 type="video/mp4"
-                >
-                Your browser does not support this video.
+              >
+              Your browser does not support this video.
             </video>
-            <figcaption>Motorised screen lift demonstration</figcaption>
-            </figure>
-            -->
-        </div>
-        </section>
 
+            <figcaption>
+              Assignment planner demonstration
+            </figcaption>
+          </figure>
+        -->
+      </div>
+    </section>
   </main>
 
+  <!-- ==================== FOOTER ==================== -->
   <footer class="site-footer">
     <div class="container">© 2026 Ryan Gleeson</div>
   </footer>

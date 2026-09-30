@@ -3,15 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>MediSort | Ryan Gleeson</title>
+
   <meta
     name="description"
     content="MediSort: a multi-robot pill sorting and handoff simulation."
   >
+
   <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
+  <!-- ==================== NAVIGATION ==================== -->
   <header class="site-header">
     <div class="container">
       <a class="back-link" href="../index.html#projects">
@@ -23,6 +27,7 @@
   <main class="container project-page">
     <!-- ==================== INTRO ==================== -->
     <div class="label">Robotics / Team project</div>
+
     <h1>MediSort</h1>
 
     <p class="project-intro">
@@ -39,13 +44,20 @@
       <span class="tag">State machines</span>
     </div>
 
+    <!-- ==================== VIDEO SHORTCUT ==================== -->
+    <div class="hero-actions">
+      <a class="button" href="#project-demo">
+        Watch demonstration ↓
+      </a>
+    </div>
+
     <!-- ==================== OVERVIEW ==================== -->
     <section>
       <h2>Overview</h2>
 
       <p>
-        MediSort simulates a coordinated workflow involving my personal custom 
-        robot, Flynn's custom robot and a UR3. The robots collect pills from 
+        MediSort simulates a coordinated workflow involving my personal custom
+        robot, Flynn's custom robot and a UR3. The robots collect pills from
         known locations, transfer them between work areas and deposit them at
         their destination.
       </p>
@@ -73,14 +85,17 @@
           <strong>Main controller:</strong> manages setup, robot actions,
           state transitions and GUI updates.
         </li>
+
         <li>
           <strong>Robot controllers:</strong> operate my robot,
           Flynn's robot and the UR3.
         </li>
+
         <li>
           <strong>Movement modules:</strong> provide RMRC, positioning,
           end-effector orientation and gripper actions.
         </li>
+
         <li>
           <strong>Swift environment:</strong> simulates the robots,
           obstacles, pill shelf and other STL meshes.
@@ -100,22 +115,28 @@
         <li>
           <strong>Approach:</strong> move toward the pill using RMRC.
         </li>
+
         <li>
           <strong>Level:</strong> adjust the end-effector orientation.
         </li>
+
         <li>
           <strong>Pick up:</strong> move into position and close the gripper.
         </li>
+
         <li>
           <strong>Handoff:</strong> move to the transfer location and
           coordinate with the UR3.
         </li>
+
         <li>
           <strong>Transfer:</strong> coordinate the next robot's pickup.
         </li>
+
         <li>
           <strong>Deposit:</strong> place the pill at its destination.
         </li>
+
         <li>
           <strong>Reset:</strong> return the robots to safe positions before
           processing the next pill.
@@ -141,12 +162,21 @@
     </section>
 
     <!-- ==================== SIMULATION VIDEO ==================== -->
-    <section>
+    <section id="project-demo">
       <h2>Simulation demo</h2>
 
-      <video class="demo-video" controls preload="metadata">
+      <video
+        class="demo-video"
+        controls
+        playsinline
+        preload="metadata"
+      >
         <source src="../videos/Medisort_Demo.mp4" type="video/mp4">
+
         Your browser does not support this video.
+        <a href="../videos/Medisort_Demo.mp4">
+          Open the demonstration video.
+        </a>
       </video>
 
       <p class="video-description">
@@ -156,6 +186,7 @@
     </section>
   </main>
 
+  <!-- ==================== FOOTER ==================== -->
   <footer class="site-footer">
     <div class="container">© 2026 Ryan Gleeson</div>
   </footer>
