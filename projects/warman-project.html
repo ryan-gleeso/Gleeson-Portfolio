@@ -3,11 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Warman Challenge Robot | Ryan Gleeson</title>
+
+  <meta
+    name="description"
+    content="Design, build and testing of our Warman Challenge robot, which placed second overall at UTS."
+  >
+
   <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
+  <!-- ==================== BACK LINK ==================== -->
   <header class="site-header">
     <div class="container">
       <a class="back-link" href="../index.html#projects">
@@ -17,107 +25,196 @@
   </header>
 
   <main class="container project-page">
-    <div class="label">Competition / Team project</div>
+    <!-- ==================== INTRO ==================== -->
+    <div class="label">Mechanical design / Team competition</div>
+
     <h1>Warman Challenge robot</h1>
 
     <p class="project-intro">
-      A team-built competition robot that placed second at UTS.
+      An autonomous robot designed to collect three different-sized balls,
+      cross a pivoting seesaw and deposit its payload in an end zone.
+      Our team placed second overall at UTS.
     </p>
 
     <div class="tags">
-      <span class="tag">Mechanical design</span>
-      <span class="tag">Prototyping</span>
-      <span class="tag">Teamwork</span>
+      <span class="tag">SolidWorks</span>
+      <span class="tag">NEMA17 steppers</span>
+      <span class="tag">Arduino</span>
+      <span class="tag">Laser cutting</span>
+      <span class="tag">State machine</span>
     </div>
 
+    <!-- ==================== CHALLENGE ==================== -->
     <section>
-      <h2>Overview</h2>
+      <h2>The challenge</h2>
+
       <p>
-        Our team designed, built and tested a robot to complete the
-        Warman Challenge task. The project required translating a
-        competition brief into a working mechanical solution.
+        The Warman Design and Build Challenge required our team to design
+        and construct a robot that could collect three model meteorites
+        of different sizes and move them to a designated end zone. The
+        robot had to navigate a ramp and pivoting seesaw within the
+        competition time limit.
+      </p>
+
+      <p>
+        We developed a front-mounted scoop to collect the balls, a
+        stepper-driven chassis to traverse the course, and a sequence
+        of movements to complete the task with minimal intervention.
       </p>
     </section>
 
+    <!-- ==================== MY CONTRIBUTION ==================== -->
     <section>
-      <h2>What the project involved</h2>
+      <h2>My contribution</h2>
+
+      <p>
+        I worked on the chassis and drivetrain, including CAD design,
+        construction, wheel mounting and testing. I also helped select
+        the NEMA17 motors and TB6600 drivers and drafted the wiring plan
+        for the robot's electronic system.
+      </p>
+
+      <p>
+        I developed and refined movement logic for the course. When
+        the seesaw's drop destabilised the robot, I added a reverse
+        movement state and tuned its timing to help the robot settle
+        before continuing.
+      </p>
+    </section>
+
+    <!-- ==================== DESIGN ITERATION ==================== -->
+    <section>
+      <h2>Design and testing</h2>
+
       <ul>
-        <li>Concept development and mechanical design.</li>
-        <li>Prototype fabrication and assembly.</li>
-        <li>Testing and refinement against competition requirements.</li>
-        <li>Working as a team under practical constraints.</li>
+        <li>
+          <strong>Wheel mounting:</strong> I iterated the adapters that
+          connected the larger wheels to the stepper shafts after early
+          versions slipped or rotated unevenly.
+        </li>
+
+        <li>
+          <strong>Ramp traversal:</strong> I used force and torque
+          calculations to examine whether the drivetrain could climb
+          the course while carrying the robot and its payload.
+        </li>
+
+        <li>
+          <strong>Scoop weight:</strong> the initial metal rods added too
+          much mass. Our team changed to lighter birch dowels to reduce
+          the load on the drivetrain.
+        </li>
+
+        <li>
+          <strong>Reliability:</strong> testing exposed an intermittent
+          connection in a WAGO connector, which we repaired before the
+          final demonstration.
+        </li>
       </ul>
     </section>
 
+    <!-- ==================== ROBOT PHOTOS ==================== -->
     <section>
-      <h2>Result</h2>
-      <p>The robot placed second at UTS.</p>
-    </section>
+      <h2>Final robot</h2>
 
-    <section>
-    <div class="gallery-heading">
-        <h2>Build gallery</h2>
-
-        <div class="gallery-controls">
-        <button
-            type="button"
-            aria-label="Scroll gallery left"
-            onclick="document.getElementById('project-gallery').scrollBy({
-            left: -500,
-            behavior: 'smooth'
-            })"
-        >
-            ←
-        </button>
-
-        <button
-            type="button"
-            aria-label="Scroll gallery right"
-            onclick="document.getElementById('project-gallery').scrollBy({
-            left: 500,
-            behavior: 'smooth'
-            })"
-        >
-            →
-        </button>
-        </div>
-    </div>
-
-    <div class="gallery-track" id="project-gallery">
-        <div class="gallery-empty">
-        Build photos and videos coming soon.
-        </div>
-
-        <!--
-        PHOTO EXAMPLE:
-
-        <figure class="gallery-item">
-        <img
-            src="../images/atlas/control-panel.jpg"
-            alt="Project Atlas control interface on the secondary display"
+      <div class="warman-photos">
+        <figure>
+          <img
+            src="../images/warman/robot-1.jpg"
+            alt="Final Warman Challenge robot from the first angle"
             loading="lazy"
-        >
-        <figcaption>Raspberry Pi control interface</figcaption>
+          >
+          <figcaption>Final robot — first view</figcaption>
         </figure>
-        -->
 
-        <!--
-        VIDEO EXAMPLE:
-
-        <figure class="gallery-item">
-        <video controls preload="metadata">
-            <source
-            src="../videos/atlas/screen-lift.mp4"
-            type="video/mp4"
-            >
-            Your browser does not support this video.
-        </video>
-        <figcaption>Motorised screen lift demonstration</figcaption>
+        <figure>
+          <img
+            src="../images/warman/robot-2.jpg"
+            alt="Final Warman Challenge robot from another angle"
+            loading="lazy"
+          >
+          <figcaption>Final robot — second view</figcaption>
         </figure>
-        -->
-    </div>
+      </div>
     </section>
 
+    <!-- ==================== DESIGN IMAGES ==================== -->
+    <section>
+      <h2>Design development</h2>
+
+      <div class="warman-photos">
+        <figure>
+          <img
+            src="../images/warman/First_Housing.png"
+            alt="First robot housing design"
+            loading="lazy"
+          >
+          <figcaption>First housing design</figcaption>
+        </figure>
+
+        <figure>
+          <img
+            src="../images/warman/Final_Housing.png"
+            alt="Final robot housing design"
+            loading="lazy"
+          >
+          <figcaption>Final housing design</figcaption>
+        </figure>
+
+        <figure>
+          <img
+            src="../images/warman/Wiring_Plan.png"
+            alt="Electrical wiring plan for the Warman robot"
+            loading="lazy"
+          >
+          <figcaption>Wiring plan</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ==================== DEMONSTRATION VIDEO ==================== -->
+    <section>
+      <h2>Competition demonstration</h2>
+
+      <video class="demo-video" controls preload="metadata">
+        <source
+          src="../videos/Warman_Robot_Demo.mp4"
+          type="video/mp4"
+        >
+        Your browser does not support this video.
+      </video>
+
+      <p class="video-description">
+        A competition run showing the robot collecting balls, crossing
+        the ramp and seesaw, and depositing its payload. We placed
+        second overall at UTS.
+      </p>
+    </section>
+
+    <!-- ==================== RESULT ==================== -->
+    <section>
+      <h2>Result and lessons</h2>
+
+      <p>
+        Our team achieved an Excelling grade and placed second overall.
+        The final demonstration also showed that small mechanical and
+        electrical changes can have a large effect on reliability.
+        Testing the robot under the same power and course conditions
+        used in the demonstration was especially valuable.
+      </p>
+    </section>
+
+    <!-- ==================== REPOSITORY ==================== -->
+    <section>
+      <h2>Design files and code</h2>
+
+      <p>
+        CAD, drawings, wiring documentation and control code can be
+        linked here once the project files are organised for sharing.
+      </p>
+
+      <span class="repo-placeholder">Repository coming soon</span>
+    </section>
   </main>
 
   <footer class="site-footer">
