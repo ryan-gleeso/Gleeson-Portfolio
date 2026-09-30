@@ -1,130 +1,440 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- ==================== PAGE SETTINGS ==================== -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>DART | Ryan Gleeson</title>
+
+  <meta
+    name="description"
+    content="Drone Assisted Remote Treatment: a ROS 2 and Gazebo
+    wildlife search-and-response simulation combining drone
+    coordination, thermal sensing, LiDAR and operator approval."
+  >
+
+  <!-- ==================== FONTS AND STYLES ==================== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
   <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
-  <header class="site-header">
-    <div class="container">
-      <a class="back-link" href="../index.html#projects">
+  <!-- ==================== NAVIGATION ==================== -->
+  <header>
+    <nav>
+      <a class="logo" href="../index.html">
+        RG<span>.</span>
+      </a>
+
+      <a href="../index.html#projects">
         ← Back to projects
       </a>
-    </div>
+    </nav>
   </header>
 
-  <main class="container project-page">
-    <div class="label">Robotics Studio 1 / Team project</div>
-    <h1>DART</h1>
-
-    <p class="project-intro">
-      A simulated drone robotics project developed as part of
-      Robotics Studio 1 at UTS.
-    </p>
-
-    <div class="tags">
-      <span class="tag">ROS 2</span>
-      <span class="tag">Gazebo</span>
-      <span class="tag">LiDAR</span>
-      <span class="tag">Team project</span>
-    </div>
-
+  <main class="project-page">
+    <!-- ==================== PROJECT INTRODUCTION ==================== -->
     <section>
-      <h2>Overview</h2>
+      <p class="eyebrow">
+        Robotics / Simulation / Wildlife conservation
+      </p>
+
+      <h1>DART</h1>
+
+      <p class="lead">
+        Drone Assisted Remote Treatment — a simulated drone fleet
+        that searches for wildlife and coordinates a response
+        under human supervision.
+      </p>
+
+      <div class="tags">
+        <span>ROS 2</span>
+        <span>Gazebo</span>
+        <span>LiDAR</span>
+        <span>Thermal Sensing</span>
+        <span>Obstacle Avoidance</span>
+        <span>RViz</span>
+        <span>In Development</span>
+      </div>
+    </section>
+
+    <!-- ==================== PROJECT PURPOSE ==================== -->
+    <section>
+      <h2>Why DART?</h2>
+
       <p>
-        Our team is developing a drone system in simulation, bringing
-        together sensing, perception, control and a user interface.
+        The project explores a wildlife-management concept for
+        park rangers, conservation teams and wildlife authorities:
+        using drones to locate animals across a forest and
+        coordinate a targeted response.
+      </p>
+
+      <p>
+        Our proposal considers how remote monitoring could support
+        field teams working across large or difficult-to-access
+        areas. The intended application combines animal detection,
+        location recording and operator-approved tagging or
+        treatment.
+      </p>
+
+      <p>
+        For Robotics Studio 1 at UTS, we are developing this concept
+        as a simulation. The focus is on robotic perception,
+        navigation, coordination and operator interaction.
+        Treatment is represented as a simulated mission action.
       </p>
     </section>
 
+    <!-- ==================== SYSTEM OVERVIEW ==================== -->
+    <section>
+      <h2>System overview</h2>
+
+      <p>
+        The baseline fleet consists of two search drones and one
+        response drone operating in a custom Gazebo forest world.
+        ROS 2 provides the software framework for connecting
+        sensors, drone control and mission logic.
+      </p>
+
+      <p>
+        Search drones use downward thermal sensing to locate
+        potential animals. A separate response drone is intended
+        to approach a detected location, re-detect the target
+        and capture an RGB image for the operator.
+      </p>
+
+      <p>
+        LiDAR and range sensors support obstacle detection
+        and clearance control. The operator interface is intended
+        to display mission progress, drone and animal locations,
+        imagery and target status.
+      </p>
+    </section>
+
+    <!-- ==================== MY CONTRIBUTION ==================== -->
     <section>
       <h2>My contribution</h2>
+
       <p>
-        My work focuses on LiDAR sensing and how its information can be
-        used within the wider drone system.
+        My current technical responsibility is the LiDAR portion
+        of the perception system, including obstacle avoidance
+        and ranging.
+      </p>
+
+      <ul>
+        <li>
+          Lead development of LiDAR obstacle-avoidance
+          and ranging functionality.
+        </li>
+
+        <li>
+          Work on range sensing for terrain clearance
+          and overhead obstacles.
+        </li>
+
+        <li>
+          Test my modules in simulation and support integration
+          with the team's drone controllers.
+        </li>
+
+        <li>
+          Support response-drone and mission-control integration.
+        </li>
+
+        <li>
+          Develop the next stage of response-drone altitude
+          control for changing terrain.
+        </li>
+      </ul>
+
+      <p>
+        My role evolved as the project progressed. The initial
+        proposal identified simulation-environment development
+        and thermal integration as intended contribution areas;
+        the later progress review formalised my focus on LiDAR
+        and ranging.
       </p>
     </section>
 
+    <!-- ==================== PLANNED MISSION WORKFLOW ==================== -->
     <section>
-      <h2>Tools and integration</h2>
+      <h2>Planned mission workflow</h2>
+
+      <ol>
+        <li>
+          <strong>Select the search area.</strong>
+          The operator defines the region to search through
+          the mission-control interface.
+        </li>
+
+        <li>
+          <strong>Distribute search paths.</strong>
+          Search drones receive routes covering the selected area.
+        </li>
+
+        <li>
+          <strong>Detect and locate a target.</strong>
+          Thermal sensing identifies a potential animal.
+          The search drone centres above it and shares an
+          approximate location.
+        </li>
+
+        <li>
+          <strong>Check for previous detections.</strong>
+          Mission logic checks the target record to avoid
+          creating duplicate response tasks.
+        </li>
+
+        <li>
+          <strong>Dispatch the response drone.</strong>
+          The response drone approaches the location while
+          maintaining clearance from terrain and obstacles.
+        </li>
+
+        <li>
+          <strong>Request an operator decision.</strong>
+          RGB imagery supports identification. The operator
+          can ignore the target or approve the simulated action.
+        </li>
+
+        <li>
+          <strong>Record the outcome.</strong>
+          The intended workflow updates the target's status
+          and mission map, then continues the search.
+        </li>
+      </ol>
+
+      <p>
+        This is the intended complete workflow. Final integration
+        and repeated end-to-end testing remain part of the
+        development plan.
+      </p>
+    </section>
+
+    <!-- ==================== HUMAN SUPERVISION ==================== -->
+    <section>
+      <h2>Human-in-the-loop control</h2>
+
+      <p>
+        Operator involvement is a central part of DART.
+        Drone sensing provides information, while the operator
+        makes the identification and response decision.
+      </p>
+
+      <p>
+        The planned interface brings together target imagery,
+        drone locations, mission progress and animal status.
+        It also provides mission controls for continuing
+        the search or returning drones to their origin.
+      </p>
+
+      <p>
+        Automated species identification is a stretch goal.
+        Operator identification from RGB imagery remains
+        the primary approach for the current project.
+      </p>
+    </section>
+
+    <!-- ==================== LIDAR AND RANGING ==================== -->
+    <section>
+      <h2>LiDAR and clearance control</h2>
+
+      <p>
+        The sensor architecture includes 360-degree LiDAR for
+        surrounding obstacle detection and downward ranging
+        for altitude control.
+      </p>
+
+      <p>
+        The response drone also includes upward ranging for
+        overhead clearance and camera-aligned ranging intended
+        to support target localisation.
+      </p>
+
+      <p>
+        At the September progress review, LiDAR obstacle detection
+        and downward ranging were implemented. Upward ranging
+        had basic logic integrated, while camera-aligned
+        localisation logic remained outstanding.
+      </p>
+
+      <p>
+        Maintaining clearance over rapidly changing terrain
+        is a key challenge. The development plan considers
+        anticipatory altitude control to reduce reliance
+        on late corrective movements.
+      </p>
+    </section>
+
+    <!-- ==================== SIMULATION ==================== -->
+    <section>
+      <h2>Simulation and development tools</h2>
+
+      <p>
+        The team established a custom 100 × 100 m Gazebo
+        environment containing terrain, a river, sparse trees
+        and animal models.
+      </p>
+
+      <p>
+        A simpler development world supports isolated module
+        testing before integration into the forest simulation.
+        RViz and RQT help inspect sensor outputs, robot states,
+        camera streams and transform frames.
+      </p>
+
+      <p>
+        The proposal established separate software packages for
+        interfaces, simulation worlds, drone platforms and
+        control logic. Multiple drone namespaces help separate
+        each drone's communications within the ROS 2 system.
+      </p>
+    </section>
+
+    <!-- ==================== CURRENT PROGRESS ==================== -->
+    <section>
+      <h2>Current progress</h2>
+
+      <p class="eyebrow">
+        September 2026 progress review
+      </p>
+
       <ul>
-        <li>ROS 2 for communication between system components.</li>
-        <li>Gazebo for simulation and testing.</li>
-        <li>LiDAR data for perception-related work.</li>
-        <li>Git for coordinating development with the team.</li>
+        <li>
+          Development and forest simulation environments established.
+        </li>
+
+        <li>
+          Basic drone goal-following demonstrated during development.
+        </li>
+
+        <li>
+          Simulated thermal sensing integrated and detecting
+          animals in the environment.
+        </li>
+
+        <li>
+          LiDAR obstacle detection and downward ranging implemented.
+        </li>
+
+        <li>
+          Upward ranging implemented with basic logic.
+        </li>
+
+        <li>
+          RGB and camera-aligned ranging sensors included,
+          with processing logic still to be completed.
+        </li>
       </ul>
     </section>
 
+    <!-- ==================== SCOPE AND DESIGN DECISIONS ==================== -->
     <section>
-    <div class="gallery-heading">
-        <h2>Build gallery</h2>
+      <h2>Scope and design decisions</h2>
 
-        <div class="gallery-controls">
-        <button
-            type="button"
-            aria-label="Scroll gallery left"
-            onclick="document.getElementById('project-gallery').scrollBy({
-            left: -500,
-            behavior: 'smooth'
-            })"
-        >
-            ←
-        </button>
+      <p>
+        The project scope was refined to prioritise a working
+        search-and-response demonstration. Full 3D mapping
+        was removed, with LiDAR focused on obstacle avoidance.
+      </p>
 
-        <button
-            type="button"
-            aria-label="Scroll gallery right"
-            onclick="document.getElementById('project-gallery').scrollBy({
-            left: 500,
-            behavior: 'smooth'
-            })"
-        >
-            →
-        </button>
-        </div>
-    </div>
+      <p>
+        Human models and vehicle-based drone deployment were
+        removed from the immediate scope. Moving animal models
+        remain a stretch goal.
+      </p>
 
-    <div class="gallery-track" id="project-gallery">
+      <p>
+        Environmental detail was reduced to manage computational
+        load. The current forest uses light foliage, so performance
+        in dense canopy remains a limitation to investigate.
+      </p>
+    </section>
+
+    <!-- ==================== NEXT DEVELOPMENT STAGES ==================== -->
+    <section>
+      <h2>Next development stages</h2>
+
+      <ul>
+        <li>
+          Refine search-path generation and distribution
+          between drones.
+        </li>
+
+        <li>
+          Prevent duplicate responses to previously detected animals.
+        </li>
+
+        <li>
+          Integrate response-drone navigation and altitude control.
+        </li>
+
+        <li>
+          Connect RGB imagery to operator identification.
+        </li>
+
+        <li>
+          Integrate mission-control displays and commands.
+        </li>
+
+        <li>
+          Complete repeatable end-to-end mission testing.
+        </li>
+      </ul>
+
+      <p>
+        Planned evaluation considers search coverage, detections,
+        response navigation, image delivery and accurate target
+        status recording. These are demonstration objectives,
+        rather than completed performance results.
+      </p>
+    </section>
+
+    <!-- ==================== LONGER-TERM VISION ==================== -->
+    <section>
+      <h2>Longer-term vision</h2>
+
+      <p>
+        The proposal imagines extending the concept into a broader
+        wildlife-monitoring platform, combining animal locations,
+        population maps and treatment records.
+      </p>
+
+      <p>
+        Future research could explore moving-target tracking,
+        automated species identification and coordination between
+        aerial and ground robots. These ideas sit beyond the
+        current semester's simulation scope.
+      </p>
+    </section>
+
+    <!-- ==================== PROJECT GALLERY ==================== -->
+    <section>
+      <div class="gallery-heading">
+        <h2>Simulation gallery</h2>
+      </div>
+
+      <div class="gallery-track">
         <div class="gallery-empty">
-        Build photos and videos coming soon.
+          Screenshots of the forest environment, drone sensors,
+          LiDAR visualisation and mission-control interface
+          will be added here.
         </div>
-
-        <!--
-        PHOTO EXAMPLE:
-
-        <figure class="gallery-item">
-        <img
-            src="../images/atlas/control-panel.jpg"
-            alt="Project Atlas control interface on the secondary display"
-            loading="lazy"
-        >
-        <figcaption>Raspberry Pi control interface</figcaption>
-        </figure>
-        -->
-
-        <!--
-        VIDEO EXAMPLE:
-
-        <figure class="gallery-item">
-        <video controls preload="metadata">
-            <source
-            src="../videos/atlas/screen-lift.mp4"
-            type="video/mp4"
-            >
-            Your browser does not support this video.
-        </video>
-        <figcaption>Motorised screen lift demonstration</figcaption>
-        </figure>
-        -->
-    </div>
+      </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">© 2026 Ryan Gleeson</div>
+  <!-- ==================== FOOTER ==================== -->
+  <footer>
+    <p>Ryan Gleeson — Engineering Portfolio</p>
   </footer>
 </body>
 </html>

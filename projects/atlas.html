@@ -1,135 +1,379 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- ==================== PAGE SETTINGS ==================== -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project Atlas | Ryan Gleeson</title>
+
+  <title>Project ATLAS | Ryan Gleeson</title>
+
+  <meta
+    name="description"
+    content="Project ATLAS: a desk-integrated engineering platform.
+    Phase 1 features an ESP32-controlled rising screen, a NEMA17
+    lead-screw lift and a dedicated 12 V power system."
+  >
+
+  <!-- ==================== FONTS AND STYLES ==================== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
   <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
-  <header class="site-header">
-    <div class="container">
-      <a class="back-link" href="../index.html#projects">
+  <!-- ==================== NAVIGATION ==================== -->
+  <header>
+    <nav>
+      <a class="logo" href="../index.html">
+        RG<span>.</span>
+      </a>
+
+      <a href="../index.html#projects">
         ← Back to projects
       </a>
-    </div>
+    </nav>
   </header>
 
-  <main class="container project-page">
-    <div class="label">Home lab / Ongoing</div>
-    <h1>Project Atlas</h1>
-
-    <p class="project-intro">
-      A desk-integrated home lab bringing robotics, embedded electronics
-      and a Raspberry Pi-powered control interface into one system.
-    </p>
-
-    <div class="tags">
-      <span class="tag">Raspberry Pi 5</span>
-      <span class="tag">ESP32</span>
-      <span class="tag">Python</span>
-      <span class="tag">PySide6</span>
-    </div>
-
+  <main class="project-page">
+    <!-- ==================== PROJECT INTRODUCTION ==================== -->
     <section>
-      <h2>Overview</h2>
-      <p>
-        Project Atlas is my ongoing platform for building and connecting
-        projects around my desk. The Raspberry Pi provides the central
-        interface, while embedded controllers operate individual mechanisms.
+      <p class="eyebrow">
+        Personal project / Embedded systems / Desk automation
       </p>
+
+      <h1>Project ATLAS</h1>
+
+      <p class="lead">
+        A modular engineering platform bringing a rising display,
+        embedded controls and future robotic tools together
+        within my desk.
+      </p>
+
+      <div class="tags">
+        <span>ESP32</span>
+        <span>Raspberry Pi 5</span>
+        <span>NEMA17</span>
+        <span>3D Printing</span>
+        <span>Power Electronics</span>
+        <span>Ongoing Project</span>
+      </div>
+    </section>
+
+    <!-- ==================== OVERALL VISION ==================== -->
+    <section>
+      <h2>The ATLAS vision</h2>
+
       <p>
-        The broader vision includes a robot arm, device troubleshooting
-        tools and other home automation modules.
+        ATLAS is my ongoing personal project to build an integrated
+        workspace for engineering, electronics and automation.
+        I am developing the platform in phases, building and
+        testing each subsystem before expanding the overall system.
+      </p>
+
+      <p>
+        The wider concept uses a Raspberry Pi as the interface
+        and computing platform, with microcontrollers handling
+        individual hardware functions. Planned additions include
+        a robotic arm and electronics troubleshooting tools.
+      </p>
+
+      <p>
+        Phase 1 establishes a working physical subsystem:
+        a screen that rises from the desk and retracts when
+        it is no longer needed.
       </p>
     </section>
 
+    <!-- ==================== PHASE 1 OVERVIEW ==================== -->
     <section>
-      <h2>What I've built so far</h2>
+      <p class="eyebrow">Phase 1 / Working prototype</p>
+
+      <h2>Motorised rising screen</h2>
+
+      <p>
+        I built a motorised screen lift using a NEMA17 stepper
+        motor, a lead-screw mechanism and a guided carriage.
+        A XIAO ESP32 controls the movement, while a dedicated
+        12 V power supply powers the lift subsystem.
+      </p>
+
+      <p>
+        This phase combines mechanical construction,
+        voltage regulation, power distribution and embedded
+        programming into a functioning pop-up display mechanism.
+      </p>
+
+      <div class="tags">
+        <span>XIAO ESP32</span>
+        <span>12 V Supply</span>
+        <span>5 V Buck Converter</span>
+        <span>Lead Screw</span>
+        <span>Stepper Driver</span>
+        <span>C++ / Arduino</span>
+      </div>
+    </section>
+
+    <!-- ==================== MECHANICAL CONSTRUCTION ==================== -->
+    <section>
+      <h2>Mechanical construction</h2>
+
+      <p>
+        The NEMA17 motor rotates a lead screw, converting
+        rotation into vertical movement of the screen carriage.
+        Guide hardware supports the carriage and constrains
+        its movement along the lift.
+      </p>
+
+      <p>
+        I used 3D-printed carriage and mounting components
+        to integrate the screen with the mechanism. Development
+        involved checking component fit, alignment and movement
+        with the screen attached.
+      </p>
+
+      <p>
+        The lead screw has an 8 mm lead. This dimension is used
+        in the firmware to convert the requested travel distance
+        into the required number of motor steps.
+      </p>
+    </section>
+
+    <!-- ==================== POWER AND VOLTAGE REGULATION ==================== -->
+    <section>
+      <h2>Dedicated power and voltage regulation</h2>
+
+      <p>
+        The rising-screen subsystem uses its own dedicated
+        12 V power supply. Power is distributed into two branches:
+        a 12 V branch for the stepper motor driver and a regulated
+        5 V branch for the controller and screen.
+      </p>
+
+      <p>
+        An adjustable buck converter steps the 12 V input down
+        to 5 V. This allows the motor and low-voltage electronics
+        to operate from the same supply.
+      </p>
+
       <ul>
-        <li>Raspberry Pi control interface on a secondary display.</li>
-        <li>I²C rotary encoder navigation.</li>
-        <li>Stepper-driven motorised screen lift.</li>
-        <li>Separate 12 V and 5 V power rails for the lift and display.</li>
-      </ul>
-    </section>
+        <li>
+          <strong>12 V branch:</strong>
+          Supplies the stepper driver, which controls the
+          NEMA17 motor.
+        </li>
 
-    <section>
-      <h2>Next steps</h2>
+        <li>
+          <strong>5 V branch:</strong>
+          Supplies the XIAO ESP32 through its VBUS connection
+          and powers the HDMI screen through a USB-A breakout.
+        </li>
+
+        <li>
+          <strong>Common ground:</strong>
+          Connects the supply, buck converter, controller
+          and driver to a shared electrical reference.
+        </li>
+
+        <li>
+          <strong>Power switching:</strong>
+          A latching switch controls the subsystem's 12 V input.
+        </li>
+
+        <li>
+          <strong>Power distribution:</strong>
+          Wago connectors distribute power between
+          the components.
+        </li>
+      </ul>
+
       <p>
-        Continue integrating the hardware modules and documenting the
-        electrical design, software and mechanical components.
+        I verified the rails with a multimeter before connecting
+        the low-voltage electronics. The input measured
+        approximately 12.03 V, and I adjusted the buck converter
+        output from approximately 5.08 V to 5.00 V.
       </p>
     </section>
 
+    <!-- ==================== EMBEDDED CONTROL ==================== -->
     <section>
-        <div class="gallery-heading">
-            <h2>Build gallery</h2>
+      <h2>Embedded movement control</h2>
 
-            <div class="gallery-controls">
-            <button
-                type="button"
-                aria-label="Scroll gallery left"
-                onclick="document.getElementById('project-gallery').scrollBy({
-                left: -500,
-                behavior: 'smooth'
-                })"
-            >
-                ←
-            </button>
+      <p>
+        I developed the movement firmware using a XIAO ESP32.
+        The controller sends step and direction signals to
+        the motor driver, with a toggle switch used to command
+        upward and downward travel.
+      </p>
 
-            <button
-                type="button"
-                aria-label="Scroll gallery right"
-                onclick="document.getElementById('project-gallery').scrollBy({
-                left: 500,
-                behavior: 'smooth'
-                })"
-            >
-                →
-            </button>
-            </div>
+      <ul>
+        <li>
+          Converted the requested travel distance into step
+          pulses using the lead-screw lead and configured
+          steps per revolution.
+        </li>
+
+        <li>
+          Implemented switch debouncing to prevent contact
+          changes from generating unintended commands.
+        </li>
+
+        <li>
+          Corrected the direction logic so the switch positions
+          matched the intended lift movement.
+        </li>
+
+        <li>
+          Adjusted pulse timing while testing the mechanism
+          with the screen attached.
+        </li>
+
+        <li>
+          Developed W/S keyboard control as a manual testing option.
+        </li>
+      </ul>
+
+      <p>
+        The build progressed from short movement tests to
+        switch-controlled travel with the screen attached.
+      </p>
+    </section>
+
+    <!-- ==================== INTEGRATION AND TESTING ==================== -->
+    <section>
+      <h2>Integration and testing</h2>
+
+      <p>
+        I tested the mechanism in stages, first checking driver
+        operation and short movements, then verifying direction,
+        switch behaviour and movement under load.
+      </p>
+
+      <p>
+        Power testing confirmed the 12 V and regulated 5 V rails,
+        followed by checks of the screen power connection
+        and the subsystem's power switch.
+      </p>
+
+      <p>
+        A controller was replaced during development after
+        overheating following a wiring short. This reinforced
+        the importance of checking connections and supply
+        voltages before powering the assembled hardware.
+      </p>
+    </section>
+
+    <!-- ==================== PHASE 1 RESULT ==================== -->
+    <section>
+      <h2>Phase 1 outcome</h2>
+
+      <p>
+        Phase 1 produced a working rising-screen prototype
+        with its own power supply and local movement control.
+        The screen can be raised and lowered using the
+        lift's toggle switch.
+      </p>
+
+      <p>
+        The completed prototype brings the mechanical assembly,
+        power electronics and firmware together, providing
+        a physical foundation for the wider ATLAS workspace.
+      </p>
+    </section>
+
+    <!-- ==================== PHOTO GALLERY ==================== -->
+    <section>
+      <div class="gallery-heading">
+        <h2>Phase 1 gallery</h2>
+      </div>
+
+      <div class="gallery-track">
+        <div class="gallery-empty">
+          Photos of the rising screen, lift mechanism,
+          controller and power distribution will be added here.
         </div>
+      </div>
+    </section>
 
-        <div class="gallery-track" id="project-gallery">
-            <div class="gallery-empty">
-            Build photos and videos coming soon.
-            </div>
+    <!-- ==================== RISING SCREEN VIDEO ==================== -->
+    <section>
+      <h2>Rising screen demonstration</h2>
 
-            <!--
-            PHOTO EXAMPLE:
+      <video
+        class="demo-video"
+        controls
+        playsinline
+        preload="metadata"
+      >
+        <source
+          src="../videos/Atlas_Phase1_Demo.mp4"
+          type="video/mp4"
+        >
 
-            <figure class="gallery-item">
-            <img
-                src="../images/atlas/control-panel.jpg"
-                alt="Project Atlas control interface on the secondary display"
-                loading="lazy"
-            >
-            <figcaption>Raspberry Pi control interface</figcaption>
-            </figure>
-            -->
+        Your browser does not support embedded video.
+        <a href="../videos/Atlas_Phase1_Demo.mp4">
+          Open the demonstration video.
+        </a>
+      </video>
 
-            <!--
-            VIDEO EXAMPLE:
+      <p class="video-description">
+        The ATLAS Phase 1 screen rising from the desk using
+        a NEMA17 lead-screw lift and ESP32 control. A dedicated
+        12 V supply powers the motor driver, while a buck converter
+        provides regulated 5 V power for the controller and screen.
+      </p>
+    </section>
 
-            <figure class="gallery-item">
-            <video controls preload="metadata">
-                <source
-                src="../videos/atlas/screen-lift.mp4"
-                type="video/mp4"
-                >
-                Your browser does not support this video.
-            </video>
-            <figcaption>Motorised screen lift demonstration</figcaption>
-            </figure>
-            -->
-        </div>
-        </section>
+    <!-- ==================== FUTURE DEVELOPMENT ==================== -->
+    <section>
+      <h2>Continuing ATLAS</h2>
+
+      <p>
+        Further phases will document the Raspberry Pi interface
+        and additional hardware modules as they are developed
+        and integrated into the workspace.
+      </p>
+
+      <p>
+        The rising screen provides the first physical building
+        block for that larger system.
+      </p>
+    </section>
+
+    <!-- ==================== SOURCE FILES ==================== -->
+    <section>
+      <h2>Source files</h2>
+
+      <p>
+        The project repository link will be added here for
+        the available firmware, printed-part models and
+        build documentation.
+      </p>
+
+      <!--
+        Add your actual repository URL, then remove the
+        comment markers around this link.
+
+        <a
+          class="button"
+          href="PASTE_YOUR_REPOSITORY_URL_HERE"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View project repository ↗
+        </a>
+      -->
+    </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">© 2026 Ryan Gleeson</div>
+  <!-- ==================== FOOTER ==================== -->
+  <footer>
+    <p>Ryan Gleeson — Engineering Portfolio</p>
   </footer>
 </body>
 </html>
