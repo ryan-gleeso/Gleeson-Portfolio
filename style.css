@@ -1,346 +1,429 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+/* ==================== COLOURS AND DEFAULTS ==================== */
 
-/* ==================== COLOURS ==================== */
 :root {
-  --background: #080c13;
+  --bg: #080c13;
   --surface: #101924;
   --border: #233545;
   --text: #edf6f8;
   --muted: #a2b5c2;
+  --accent: #67e8f9;
   --cyan: #67e8f9;
   --green: #c5ff75;
 }
 
-/* ==================== GENERAL ==================== */
 * {
   box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 30px;
 }
 
 body {
   margin: 0;
-  background: var(--background);
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      ellipse at top right,
+      rgba(103, 232, 249, 0.07),
+      transparent 45%
+    ),
+    var(--bg);
   color: var(--text);
-  font: 16px/1.7 "Space Grotesk", Arial, sans-serif;
+  font-family: "Space Grotesk", sans-serif;
+  line-height: 1.7;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+img,
+video {
+  max-width: 100%;
 }
 
 a {
-  color: inherit;
+  color: var(--accent);
   text-decoration: none;
+}
+
+a:hover {
+  color: var(--green);
 }
 
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid var(--cyan);
-  outline-offset: 4px;
+  outline: 2px solid var(--accent);
+  outline-offset: 5px;
 }
 
-.container {
-  width: min(1120px, calc(100% - 40px));
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+/* ==================== PAGE WIDTH ==================== */
+
+header,
+main,
+footer {
+  width: min(1100px, calc(100% - 48px));
   margin-inline: auto;
 }
 
-.label,
-.tag,
-.back-link,
-.button {
-  font-family: "DM Mono", monospace;
-}
+/* ==================== NAVIGATION ==================== */
 
-.label {
-  color: var(--cyan);
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-}
-
-.accent {
-  color: var(--cyan);
-}
-
-/* ==================== HEADER ==================== */
-.site-header {
-  border-bottom: 1px solid var(--border);
-  background: rgba(8, 12, 19, 0.95);
-}
-
-.nav {
-  min-height: 76px;
+nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: 24px;
+  min-height: 100px;
+  border-bottom: 1px solid var(--border);
 }
 
 .logo {
-  font-size: 1.2rem;
+  color: var(--text);
+  font-size: 1.7rem;
   font-weight: 700;
+  letter-spacing: -0.08em;
 }
 
 .logo span {
-  color: var(--cyan);
+  color: var(--accent);
 }
 
 .nav-links {
   display: flex;
-  gap: 25px;
-  font: 0.8rem "DM Mono", monospace;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+nav > a:not(.logo),
+.nav-links a {
+  font-family: "DM Mono", monospace;
+  font-size: 0.85rem;
+}
+
+/* ==================== TYPOGRAPHY ==================== */
+
+h1,
+h2,
+h3 {
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+}
+
+h1 {
+  margin: 16px 0 24px;
+  font-size: clamp(3rem, 8vw, 6rem);
+}
+
+h2 {
+  margin: 0 0 20px;
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+}
+
+h3 {
+  margin: 0 0 12px;
+  font-size: 1.35rem;
+}
+
+p {
+  margin: 0 0 18px;
+}
+
+.eyebrow {
+  margin-bottom: 16px;
+  color: var(--accent);
+  font-family: "DM Mono", monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
-.nav-links a:hover,
-.back-link:hover {
-  color: var(--cyan);
+.lead {
+  max-width: 800px;
+  color: var(--muted);
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  line-height: 1.8;
+}
+
+.muted {
+  color: var(--muted);
 }
 
 /* ==================== HOMEPAGE HERO ==================== */
+
 .hero {
-  min-height: 520px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 80px 0;
+  padding: 100px 0 80px;
 }
 
 .hero h1 {
-  margin: 22px 0;
-  font-size: clamp(4rem, 11vw, 9rem);
-  line-height: 0.9;
-  letter-spacing: -0.09em;
+  max-width: 1000px;
+  font-size: clamp(3.5rem, 10vw, 8rem);
+  line-height: 0.95;
 }
 
 .outline {
   color: transparent;
-  -webkit-text-stroke: 1px #91abb8;
+  -webkit-text-stroke: 1px var(--accent);
 }
 
-.hero p {
-  max-width: 650px;
+.hero p:not(.eyebrow) {
+  max-width: 720px;
   color: var(--muted);
-  font-size: 1.2rem;
 }
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+/* ==================== BUTTONS ==================== */
 
 .button {
-  display: inline-block;
-  width: fit-content;
-  margin-top: 24px;
-  padding: 13px 19px;
-  border: 1px solid var(--cyan);
-  background: var(--cyan);
-  color: #071017;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  transition: transform 0.2s, background 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 20px;
+
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--accent);
+
+  font-family: "DM Mono", monospace;
+  font-size: 0.85rem;
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .button:hover {
-  transform: translateY(-3px);
-  background: #a6f5ff;
+  transform: translateY(-2px);
+  background: var(--accent);
+  color: var(--bg);
 }
 
-.button-outline {
-  background: transparent;
-  color: var(--cyan);
+.button.secondary {
+  border-color: var(--border);
+  color: var(--text);
 }
 
-.button-outline:hover {
-  background: #10252c;
+.button.secondary:hover {
+  border-color: var(--accent);
+  background: var(--surface);
+  color: var(--accent);
 }
 
-/* ==================== HOMEPAGE SECTIONS ==================== */
-section {
-  padding: 80px 0;
-  border-top: 1px solid var(--border);
+/* ==================== CONTENT SECTIONS ==================== */
+
+main > section {
+  padding: 48px 0;
+  border-bottom: 1px solid var(--border);
 }
 
-.section-title {
-  margin: 12px 0 35px;
-  font-size: clamp(2.7rem, 6vw, 5rem);
-  line-height: 1;
-  letter-spacing: -0.07em;
+.section-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
 }
 
-/* ==================== PROJECT CARDS ==================== */
+.section-heading h2 {
+  margin-bottom: 0;
+}
+
+.section-heading p {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+/* ==================== HOMEPAGE PROJECT LIST ==================== */
+
 .project-list {
   display: grid;
+  grid-template-columns: 1fr;
   gap: 16px;
 }
 
 .project-card {
   display: block;
-  padding: 30px;
+  position: relative;
+  padding: 28px;
+
   border: 1px solid var(--border);
-  background: linear-gradient(145deg, #14212d, #0c141e);
-  transition: border-color 0.2s, transform 0.2s;
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text);
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
 }
 
-.project-card:hover,
-.project-card:focus-visible {
-  border-color: var(--cyan);
-  transform: translateY(-4px);
-}
-
-.project-card:first-child {
-  background: radial-gradient(
-    circle at 85% 20%,
-    #165263,
-    #111e2b 35%,
-    #0c141e 75%
-  );
+.project-card:hover {
+  transform: translateX(5px);
+  border-color: var(--accent);
+  background: #14212f;
+  color: var(--text);
 }
 
 .project-card h3 {
-  margin: 0 0 10px;
-  font-size: clamp(1.7rem, 3vw, 2.5rem);
-  line-height: 1.1;
-  letter-spacing: -0.05em;
+  color: var(--text);
 }
 
 .project-card p {
-  max-width: 780px;
-  margin: 0 0 20px;
+  max-width: 850px;
   color: var(--muted);
 }
 
-.card-action {
-  display: block;
-  margin-top: 22px;
-  color: var(--cyan);
-  font: 0.8rem "DM Mono", monospace;
-  text-transform: uppercase;
+.project-card .arrow {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  color: var(--accent);
+  font-size: 1.4rem;
 }
 
-/* ==================== TECHNOLOGY TAGS ==================== */
+/* ==================== TECHNOLOGY FLAGS ==================== */
+
 .tags {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  margin-top: 20px;
 }
 
-.tag {
-  padding: 7px 9px;
-  border: 1px solid #34505d;
-  color: #c8dce4;
-  font-size: 0.7rem;
-  text-transform: uppercase;
+.tags span {
+  display: inline-block;
+  padding: 5px 10px;
+
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: rgba(103, 232, 249, 0.04);
+  color: var(--accent);
+
+  font-family: "DM Mono", monospace;
+  font-size: 0.72rem;
 }
 
 /* ==================== PROJECT DETAIL PAGES ==================== */
-.back-link {
-  display: inline-block;
-  padding: 22px 0;
-  color: var(--muted);
-  font-size: 0.85rem;
-}
 
 .project-page {
-  padding: 70px 0 100px;
+  padding-top: 30px;
+  padding-bottom: 40px;
 }
 
-.project-page h1 {
-  max-width: 900px;
-  margin: 15px 0 25px;
-  font-size: clamp(3rem, 8vw, 6rem);
-  line-height: 1;
-  letter-spacing: -0.075em;
+.project-page > section:first-child {
+  padding-top: 45px;
 }
 
-.project-intro {
-  max-width: 800px;
-  color: var(--muted);
-  font-size: 1.3rem;
-}
-
-.project-page .tags {
-  margin: 30px 0 70px;
-}
-
-.project-page section {
-  padding: 45px 0;
-}
-
-.project-page h2 {
-  margin: 0 0 16px;
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
-  letter-spacing: -0.05em;
-}
-
-.project-page section p,
+.project-page p,
 .project-page li {
-  max-width: 780px;
   color: var(--muted);
+}
+
+.project-page .eyebrow {
+  color: var(--accent);
+}
+
+.project-page strong {
+  color: var(--text);
 }
 
 .project-page ul,
 .project-page ol {
-  padding-left: 23px;
+  max-width: 900px;
+  margin: 20px 0;
+  padding-left: 24px;
 }
 
-.project-page li + li {
-  margin-top: 8px;
+.project-page li {
+  margin-bottom: 12px;
+  padding-left: 4px;
 }
 
-.repo-placeholder {
-  display: inline-block;
-  padding: 13px 19px;
-  border: 1px solid var(--border);
-  color: var(--muted);
-  font: 0.8rem "DM Mono", monospace;
-  text-transform: uppercase;
+.project-page li::marker {
+  color: var(--accent);
 }
 
-/* ==================== HORIZONTAL GALLERY ==================== */
-/* Retained for project pages that use a scrolling gallery. */
+/* ==================== GENERAL SCROLLING GALLERY ==================== */
+
 .gallery-heading {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  flex-wrap: wrap;
+  gap: 16px;
   margin-bottom: 20px;
 }
 
 .gallery-heading h2 {
-  margin: 0;
+  margin-bottom: 0;
 }
 
 .gallery-controls {
   display: flex;
-  gap: 8px;
+  gap: 10px;
 }
 
-.gallery-controls button {
-  width: 44px;
-  height: 44px;
+.gallery-controls button,
+.gallery-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+
   border: 1px solid var(--border);
+  border-radius: 6px;
   background: var(--surface);
-  color: var(--cyan);
-  font-size: 1.4rem;
+  color: var(--accent);
   cursor: pointer;
 }
 
-.gallery-controls button:hover {
-  border-color: var(--cyan);
+.gallery-controls button:hover,
+.gallery-btn:hover {
+  border-color: var(--accent);
 }
 
 .gallery-track {
   display: flex;
-  gap: 16px;
+  gap: 20px;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  scrollbar-width: thin;
-  scrollbar-color: var(--cyan) var(--surface);
+  margin-top: 25px;
   padding-bottom: 16px;
+
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) var(--surface);
 }
 
 .gallery-item {
-  flex: 0 0 min(80vw, 650px);
+  flex: 0 0 min(600px, 90%);
+  min-width: 0;
   margin: 0;
+
   border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
   background: var(--surface);
+
   scroll-snap-align: start;
 }
 
@@ -348,34 +431,31 @@ section {
 .gallery-item video {
   display: block;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  height: 360px;
   object-fit: contain;
   background: #05090f;
 }
 
-.gallery-item figcaption {
-  padding: 12px 16px;
+.gallery-item figcaption,
+.gallery-caption {
+  padding: 16px;
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
 }
 
 .gallery-empty {
   width: 100%;
-  padding: 50px 20px;
-  border: 1px dashed var(--border);
-  color: var(--muted);
-  text-align: center;
-}
+  min-height: 150px;
+  padding: 32px;
 
-.project-image {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  margin: 25px 0;
-  border: 1px solid var(--border);
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--muted);
 }
 
 /* ==================== WARMAN PHOTO GRID ==================== */
+
 .warman-photos {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -386,6 +466,8 @@ section {
 .warman-photos figure {
   margin: 0;
   border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
   background: var(--surface);
 }
 
@@ -404,14 +486,16 @@ section {
 }
 
 /* ==================== DEMO VIDEOS ==================== */
-/* Shared by the MediSort and Warman pages. */
+
 .demo-video {
   display: block;
   width: 100%;
   max-width: 900px;
   height: auto;
   margin-top: 25px;
+
   border: 1px solid var(--border);
+  border-radius: 10px;
   background: #05090f;
 }
 
@@ -422,48 +506,164 @@ section {
   font-style: italic;
 }
 
-/* ==================== FOOTER ==================== */
-.site-footer {
-  padding: 28px 0;
-  border-top: 1px solid var(--border);
-  color: var(--muted);
-  font: 0.75rem "DM Mono", monospace;
+/* ==================== PEDOMETER IMAGE GALLERY ==================== */
+
+.pedometer-gallery {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  margin-top: 25px;
+  padding-bottom: 16px;
+
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) var(--surface);
 }
 
-/* ==================== MOBILE ==================== */
+.pedometer-gallery figure {
+  flex: 0 0 min(420px, 85%);
+  min-width: 0;
+  margin: 0;
+
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--surface);
+
+  scroll-snap-align: start;
+}
+
+.pedometer-gallery img {
+  display: block;
+  width: 100%;
+  height: 360px;
+  padding: 12px;
+
+  object-fit: contain;
+  background: #05090f;
+}
+
+.pedometer-gallery figcaption {
+  padding: 18px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.pedometer-gallery figcaption strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.pedometer-gallery:focus-visible,
+.gallery-track:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 5px;
+}
+
+/* ==================== GALLERY SCROLLBARS ==================== */
+
+.pedometer-gallery::-webkit-scrollbar,
+.gallery-track::-webkit-scrollbar {
+  height: 8px;
+}
+
+.pedometer-gallery::-webkit-scrollbar-track,
+.gallery-track::-webkit-scrollbar-track {
+  background: var(--surface);
+  border-radius: 10px;
+}
+
+.pedometer-gallery::-webkit-scrollbar-thumb,
+.gallery-track::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 10px;
+}
+
+/* ==================== CODE BLOCKS ==================== */
+
+pre {
+  overflow-x: auto;
+  padding: 20px;
+
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #05090f;
+}
+
+code {
+  font-family: "DM Mono", monospace;
+  font-size: 0.85em;
+}
+
+:not(pre) > code {
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--surface);
+  color: var(--accent);
+}
+
+/* ==================== FOOTER ==================== */
+
+footer {
+  padding: 35px 0;
+  color: var(--muted);
+  font-family: "DM Mono", monospace;
+  font-size: 0.75rem;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* ==================== MOBILE LAYOUT ==================== */
+
 @media (max-width: 650px) {
-  .nav {
-    min-height: 65px;
+  header,
+  main,
+  footer {
+    width: calc(100% - 32px);
+  }
+
+  nav {
+    min-height: 80px;
+    gap: 16px;
+  }
+
+  nav > a:not(.logo),
+  .nav-links a {
+    font-size: 0.75rem;
   }
 
   .nav-links {
     gap: 12px;
-    font-size: 0.7rem;
   }
 
   .hero {
-    min-height: 420px;
+    padding: 65px 0 50px;
   }
 
-  .hero p,
-  .project-intro {
-    font-size: 1.05rem;
-  }
-
-  section {
-    padding: 65px 0;
+  main > section {
+    padding: 35px 0;
   }
 
   .project-card {
-    padding: 23px;
+    padding: 22px;
   }
 
-  .project-page {
-    padding-top: 50px;
+  .project-card:hover {
+    transform: translateY(-2px);
   }
 
-  .gallery-item {
-    flex-basis: 88vw;
+  .project-card h3 {
+    padding-right: 25px;
+  }
+
+  .project-card .arrow {
+    top: 20px;
+    right: 18px;
   }
 
   .warman-photos {
@@ -474,14 +674,29 @@ section {
     height: auto;
     max-height: 430px;
   }
+
+  .pedometer-gallery img,
+  .gallery-item img,
+  .gallery-item video {
+    height: 280px;
+  }
+
+  .gallery-empty {
+    padding: 24px;
+  }
 }
 
 /* ==================== REDUCED MOTION ==================== */
+
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   *,
   *::before,
   *::after {
-    scroll-behavior: auto !important;
+    animation: none !important;
     transition: none !important;
   }
 }

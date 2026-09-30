@@ -1,124 +1,390 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- ==================== PAGE SETTINGS ==================== -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Step Tracker PCB | Ryan Gleeson</title>
+
+  <title>EMS Pedometer | Ryan Gleeson</title>
+
+  <meta
+    name="description"
+    content="An ESP32-based pedometer with a custom PCB, OLED interface,
+    rotary encoder and 3D-printed enclosure. Explore Ryan Gleeson's
+    electronics, embedded software and mechanical design contributions."
+  >
+
+  <!-- ==================== FONTS AND STYLES ==================== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
   <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
-  <header class="site-header">
-    <div class="container">
-      <a class="back-link" href="../index.html#projects">
+  <!-- ==================== NAVIGATION ==================== -->
+  <header>
+    <nav>
+      <a class="logo" href="../index.html">
+        RG<span>.</span>
+      </a>
+
+      <a href="../index.html#projects">
         ← Back to projects
       </a>
-    </div>
+    </nav>
   </header>
 
-  <main class="container project-page">
-    <div class="label">Electronics / PCB</div>
-    <h1>Step tracker PCB</h1>
-
-    <p class="project-intro">
-      A custom electronics project exploring step detection, embedded
-      design and PCB development.
-    </p>
-
-    <div class="tags">
-      <span class="tag">Altium Designer</span>
-      <span class="tag">PCB</span>
-      <span class="tag">Sensors</span>
-      <span class="tag">Embedded systems</span>
-    </div>
-
+  <main class="project-page">
+    <!-- ==================== PROJECT INTRODUCTION ==================== -->
     <section>
-      <h2>Overview</h2>
+      <p class="eyebrow">
+        Embedded systems / Electronics / Mechanical design
+      </p>
+
+      <h1>EMS Pedometer</h1>
+
+      <p class="lead">
+        A hip-mounted activity tracker combining a custom PCB,
+        motion sensing and an interactive OLED interface in a
+        3D-printed enclosure.
+      </p>
+
+      <div class="tags">
+        <span>ESP32 TinyPICO</span>
+        <span>ADXL335</span>
+        <span>C++</span>
+        <span>Altium Designer</span>
+        <span>SolidWorks</span>
+        <span>I²C</span>
+        <span>3D Printing</span>
+      </div>
+    </section>
+
+    <!-- ==================== PROJECT OVERVIEW ==================== -->
+    <section>
+      <h2>Project overview</h2>
+
       <p>
-        The step tracker project explores the path from a sensing concept
-        to a custom electronic design, including component selection,
-        schematic capture and PCB layout.
+        Developed as a team project at UTS, the EMS Pedometer is
+        a portable activity-monitoring prototype intended for
+        elderly users and assisted-living applications.
+      </p>
+
+      <p>
+        The device measures movement using a three-axis ADXL335
+        accelerometer. Signal conditioning and embedded processing
+        support step counting, cadence estimation, classification
+        of stationary, walking and running activity, and potential
+        fall detection.
+      </p>
+
+      <p>
+        An OLED display and rotary encoder provide access to
+        tracking information, calibration and self-test routines.
+        Wi-Fi telemetry allows motion data and detection behaviour
+        to be inspected during development and testing.
       </p>
     </section>
 
+    <!-- ==================== MY CONTRIBUTION ==================== -->
     <section>
-      <h2>Engineering focus</h2>
+      <h2>My contribution</h2>
+
+      <p>
+        I was responsible for the peripheral and system input/output
+        subsystem, GUI development and mechanical enclosure.
+        My work connected the device's electronics, embedded
+        software and physical user interface.
+      </p>
+
       <ul>
-        <li>Acquiring motion-related sensor data.</li>
-        <li>Designing the supporting electronics.</li>
-        <li>Developing a practical board layout.</li>
+        <li>
+          Designed the OLED, rotary encoder and indicator LED
+          circuitry in Altium Designer.
+        </li>
+
+        <li>
+          Contributed to schematic capture, PCB placement,
+          routing, footprint checks and design-rule validation.
+        </li>
+
+        <li>
+          Developed the C++ GUI controller, menu navigation
+          and OLED screen-rendering functions.
+        </li>
+
+        <li>
+          Created a menu simulation using sample values to
+          check layouts and transitions before integration.
+        </li>
+
+        <li>
+          Designed the enclosure in SolidWorks and produced
+          multiple 3D-printed prototypes.
+        </li>
+
+        <li>
+          Worked with the team to integrate the interface with
+          calibration, self-test, step tracking and fault handling.
+        </li>
       </ul>
     </section>
 
+    <!-- ==================== HARDWARE ==================== -->
     <section>
-    <div class="gallery-heading">
-        <h2>Build gallery</h2>
+      <h2>Hardware and electronics</h2>
 
-        <div class="gallery-controls">
-        <button
-            type="button"
-            aria-label="Scroll gallery left"
-            onclick="document.getElementById('project-gallery').scrollBy({
-            left: -500,
-            behavior: 'smooth'
-            })"
-        >
-            ←
-        </button>
+      <p>
+        The system uses an ESP32 TinyPICO as its central controller,
+        an ADXL335 accelerometer, a 2.42-inch SSD1309 OLED display
+        and an Adafruit I²C rotary encoder with a push button.
+        A rechargeable 3.7 V, 1200 mAh LiPo battery provides
+        portable operation.
+      </p>
 
-        <button
-            type="button"
-            aria-label="Scroll gallery right"
-            onclick="document.getElementById('project-gallery').scrollBy({
-            left: 500,
-            behavior: 'smooth'
-            })"
-        >
-            →
-        </button>
-        </div>
-    </div>
+      <p>
+        The OLED and rotary encoder share an I²C bus. This reduces
+        wiring and conserves GPIO pins, while separate GPIO
+        outputs control the indicator LEDs.
+      </p>
 
-    <div class="gallery-track" id="project-gallery">
-        <div class="gallery-empty">
-        Build photos and videos coming soon.
-        </div>
-
-        <!--
-        PHOTO EXAMPLE:
-
-        <figure class="gallery-item">
-        <img
-            src="../images/atlas/control-panel.jpg"
-            alt="Project Atlas control interface on the secondary display"
-            loading="lazy"
-        >
-        <figcaption>Raspberry Pi control interface</figcaption>
-        </figure>
-        -->
-
-        <!--
-        VIDEO EXAMPLE:
-
-        <figure class="gallery-item">
-        <video controls preload="metadata">
-            <source
-            src="../videos/atlas/screen-lift.mp4"
-            type="video/mp4"
-            >
-            Your browser does not support this video.
-        </video>
-        <figcaption>Motorised screen lift demonstration</figcaption>
-        </figure>
-        -->
-    </div>
+      <p>
+        The custom four-layer PCB brings the subsystems together.
+        My peripheral circuitry and layout work considered signal
+        routing, power connections, connector access and integration
+        with the enclosure.
+      </p>
     </section>
 
+    <!-- ==================== EMBEDDED SOFTWARE ==================== -->
+    <section>
+      <h2>Embedded interface and software</h2>
 
+      <p>
+        I developed a state-based interface in C++. Rotating the
+        encoder moves through the menu, and pressing its button
+        selects an operating mode.
+      </p>
+
+      <p>
+        The menu provides calibration, self-test, step tracking,
+        step-count reset and a built-in Pong game. During tracking,
+        the display presents the step count, cadence, estimated
+        calories and current movement state.
+      </p>
+
+      <p>
+        A dedicated GUI controller separates screen rendering from
+        the underlying subsystem logic. This makes the interface
+        easier to maintain as different parts of the system evolve.
+      </p>
+
+      <p>
+        I implemented a dirty-flag rendering mechanism so the OLED
+        updates when displayed content changes. This avoids
+        unnecessary redraws and reduces I²C communication.
+      </p>
+    </section>
+
+    <!-- ==================== MECHANICAL DESIGN ==================== -->
+    <section>
+      <h2>Enclosure design</h2>
+
+      <p>
+        I designed and iterated the enclosure in SolidWorks,
+        using 3D-printed prototypes to check component fit,
+        assembly and access to the user controls.
+      </p>
+
+      <p>
+        The design needed to accommodate the PCB and battery
+        while keeping the display, encoder, charging interface
+        and indicator LEDs accessible.
+      </p>
+
+      <p>
+        The final enclosure measures approximately
+        78 × 81 × 35 mm, excluding the encoder knob and modular
+        attachments. Its attachment system supports different
+        mounting configurations.
+      </p>
+    </section>
+
+    <!-- ==================== TESTING AND RESULTS ==================== -->
+    <section>
+      <h2>Testing and results</h2>
+
+      <p>
+        My subsystem testing covered encoder navigation,
+        button selection, OLED initialisation, calibration prompts,
+        self-test feedback, tracking displays and battery-voltage
+        presentation. These checks passed in the documented
+        validation.
+      </p>
+
+      <p>
+        The team's complete hardware testing compared the device
+        count against manually counted steps:
+      </p>
+
+      <ul>
+        <li>
+          Walking: 208 detected from 200 steps — 4% error.
+        </li>
+
+        <li>
+          Running: 203 detected from 200 steps — 1.5% error.
+        </li>
+
+        <li>
+          Mixed activity: 311 detected from 300 steps —
+          approximately 3.7% error.
+        </li>
+
+        <li>
+          Two final demonstration tests: 47 detected from
+          47 steps in each test.
+        </li>
+      </ul>
+
+      <p>
+        These hardware trials met the project's 5% step-count
+        error target. Broader offline testing identified a limitation:
+        general daily movements produced 6.9% error, showing that
+        non-stepping motion could still trigger false detections.
+      </p>
+    </section>
+
+    <!-- ==================== DESIGN LESSONS ==================== -->
+    <section>
+      <h2>What I learned</h2>
+
+      <p>
+        This project gave me practical experience taking electronics
+        from a schematic through PCB manufacture, assembly and
+        integration with embedded software.
+      </p>
+
+      <p>
+        Moving from smaller programs into a multi-file C++ codebase
+        strengthened my understanding of modular software design,
+        state machines and collaboration through version control.
+      </p>
+
+      <p>
+        Enclosure iterations also showed how closely mechanical
+        design depends on PCB placement, connector positions and
+        user access. Earlier integration checks are a lesson I
+        will carry into future projects.
+      </p>
+    </section>
+
+    <!-- ==================== PROJECT GALLERY ==================== -->
+    <section>
+      <div class="gallery-heading">
+        <h2>Project gallery</h2>
+      </div>
+
+      <p>
+        Scroll sideways to explore the device and its development.
+      </p>
+
+      <div
+        class="pedometer-gallery"
+        tabindex="0"
+        role="region"
+        aria-label="Pedometer project images"
+      >
+        <!-- FINISHED DEVICE -->
+        <figure>
+          <img
+            src="../images/pedometer-final.png"
+            alt="Assembled pedometer with OLED menu, rotary encoder and indicator LEDs"
+            loading="lazy"
+          >
+
+          <figcaption>
+            <strong>Finished device</strong>
+            The assembled pedometer in its final 3D-printed
+            enclosure, with the OLED display and rotary encoder
+            accessible.
+          </figcaption>
+        </figure>
+
+        <!-- USER INTERFACE -->
+        <figure>
+          <img
+            src="../images/pedometer-menu.png"
+            alt="Pedometer menu, calibration, self-test and step-tracking screens"
+            loading="lazy"
+          >
+
+          <figcaption>
+            <strong>Embedded user interface</strong>
+            Screens from the C++ GUI I developed for menu
+            navigation, calibration, self-test and live
+            step-tracking information.
+          </figcaption>
+        </figure>
+
+        <!-- CUSTOM PCB -->
+        <figure>
+          <img
+            src="../images/pedometer-pcb.png"
+            alt="Assembled custom pedometer PCB with ESP32 TinyPICO"
+            loading="lazy"
+          >
+
+          <figcaption>
+            <strong>Custom PCB</strong>
+            The team's assembled board. My contributions included
+            the OLED, rotary encoder and indicator LED circuitry,
+            alongside PCB layout and integration work.
+          </figcaption>
+        </figure>
+
+        <!-- EXPLODED DRAWING -->
+        <figure>
+          <img
+            src="../images/pedometer-exploded.png"
+            alt="Exploded engineering drawing of the pedometer assembly"
+            loading="lazy"
+          >
+
+          <figcaption>
+            <strong>Mechanical assembly</strong>
+            An exploded drawing showing the enclosure components
+            and how the electronics fit within the device.
+          </figcaption>
+        </figure>
+
+        <!-- ENCLOSURE ITERATIONS -->
+        <figure>
+          <img
+            src="../images/pedometer-iterations.png"
+            alt="Multiple printed pedometer enclosure prototypes"
+            loading="lazy"
+          >
+
+          <figcaption>
+            <strong>Enclosure development</strong>
+            Successive prototypes used to refine component fit,
+            assembly, control access and overall size.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">© 2026 Ryan Gleeson</div>
+  <!-- ==================== FOOTER ==================== -->
+  <footer>
+    <p>Ryan Gleeson — Engineering Portfolio</p>
   </footer>
 </body>
 </html>
